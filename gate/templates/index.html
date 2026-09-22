@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mockyGATE — GATE CS/IT live-exam mock tests</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- ───────────────────── HOME ───────────────────── -->
+<div id="screen-home" class="screen active">
+  <div class="hero">
+    <div class="hero-badge">GATE • Computer Science &amp; Information Technology</div>
+    <h1>mocky<span class="accent">GATE</span></h1>
+    <p class="tagline">Live 180-minute exam feel • MCQ · MSQ · NAT • Code, graph &amp; table questions • Real PYQs</p>
+    <p class="tier-note" id="paper-note"></p>
+    <p class="ai-note" id="ai-status"></p>
+  </div>
+
+  <div class="card-grid">
+    <div class="mode-card" id="card-pyq">
+      <div class="mode-icon">📄</div>
+      <h2>Real PYQ Mock</h2>
+      <p>Original past-paper questions (shown exactly as printed, with official answer keys).</p>
+      <div class="form-group">
+        <label>Paper</label>
+        <select id="pyq-paper" class="select"></select>
+      </div>
+      <div id="pyq-subject-box">
+        <div class="form-group"><label>Subject(s)</label><div id="pyq-sections" class="chapter-list"></div></div>
+        <div class="form-group"><label>Questions per subject</label><div class="count-pills" id="pyq-count-pills"></div></div>
+      </div>
+      <button class="btn-primary" id="btn-start-pyq">Start PYQ Mock →</button>
+      <p class="fine-print" id="pyq-fine"></p>
+    </div>
+
+    <div class="mode-card" id="card-practice">
+      <div class="mode-icon">📚</div>
+      <h2>Subject-wise Mock</h2>
+      <p>Pick subjects and how many questions. New questions on the GATE pattern (1-mark / 2-mark mix), timed at 1.8 min per mark.</p>
+      <div class="form-group">
+        <label>Select Subject(s)</label>
+        <div id="prac-sections" class="chapter-list"></div>
+        <button class="btn-link" id="btn-select-all">Select All</button>
+      </div>
+      <div class="form-group"><label>Questions per subject</label><div class="count-pills" id="count-pills"></div></div>
+      <button class="btn-primary" id="btn-start-practice">Start Subject Mock →</button>
+    </div>
+
+    <div class="mode-card highlight" id="card-full">
+      <div class="mode-icon">🏆</div>
+      <h2>Full Mock Test</h2>
+      <p id="full-desc"></p>
+      <ul class="mock-details" id="full-list"></ul>
+      <button class="btn-primary btn-gold" id="btn-start-full">Start Full Mock →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────── LOADING ───────────────────── -->
+<div id="screen-loading" class="screen">
+  <div class="loading-center">
+    <div class="spinner"></div>
+    <h2 id="loading-title">Preparing Your Paper</h2>
+    <p id="loading-sub">Writing and verifying questions…</p>
+    <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div><span id="progress-label">0 / 0</span></div>
+    <p class="loading-tip" id="loading-tip"></p>
+  </div>
+</div>
+
+<!-- ───────────────────── EXAM ───────────────────── -->
+<div id="screen-exam" class="screen">
+  <div class="exam-header">
+    <div class="exam-info"><span id="exam-mode-label" class="exam-badge">Full Mock</span></div>
+    <div class="sec-tabs" id="sub-tabs"></div>
+    <button class="btn-secondary btn-sm" id="btn-calc">🧮 Calculator</button>
+    <div class="timer-box" id="timer-box"><span class="timer-icon">⏱</span><span id="timer-display">00:00</span></div>
+    <button class="btn-danger-sm" id="btn-submit-block">Submit Exam</button>
+  </div>
+
+  <div class="exam-body">
+    <div class="q-nav-wrap">
+      <div class="q-nav" id="q-nav"></div>
+      <div class="nav-legend">
+        <span><i class="lg nv"></i>Not visited</span><span><i class="lg na"></i>Not answered</span><span><i class="lg an"></i>Answered</span>
+        <span><i class="lg mk"></i>Marked</span><span><i class="lg am"></i>Answered &amp; marked</span>
+      </div>
+    </div>
+    <div class="q-panel">
+      <div class="q-meta">
+        <span id="q-counter">Q 1 of 65</span>
+        <span id="q-section-tag" class="chapter-tag"></span>
+        <span id="q-type-tag" class="type-tag"></span>
+        <span id="q-marks-tag" class="marks-tag"></span>
+      </div>
+      <div class="q-context" id="q-context" style="display:none"></div>
+      <pre class="q-code" id="q-code" style="display:none"></pre>
+      <div class="q-figure" id="q-figure" style="display:none"></div>
+      <div class="q-text" id="q-text"></div>
+      <img class="q-img" id="q-img" alt="Question" style="display:none">
+      <div class="q-options" id="q-options"></div>
+      <div class="nat-box" id="nat-box" style="display:none">
+        <input id="nat-input" type="text" inputmode="decimal" autocomplete="off" placeholder="Type the numerical answer" />
+        <div class="keypad" id="keypad"></div>
+      </div>
+      <div class="q-nav-btns">
+        <button class="btn-secondary" id="btn-prev">← Prev</button>
+        <button class="btn-secondary" id="btn-clear">Clear Response</button>
+        <button class="btn-secondary btn-mark" id="btn-mark">Mark for Review &amp; Next</button>
+        <button class="btn-primary" id="btn-next">Save &amp; Next →</button>
+      </div>
+    </div>
+  </div>
+  <div class="calc" id="calc" style="display:none">
+    <div class="calc-head"><b>Scientific Calculator</b><button class="calc-x" id="calc-x">✕</button></div>
+    <input id="calc-disp" readonly value="0"><div class="calc-keys" id="calc-keys"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- ───────────────────── RESULT ───────────────────── -->
+<div id="screen-result" class="screen">
+  <div class="result-header"><h1>📊 Result</h1><p id="result-grade" class="grade-text"></p></div>
+  <div class="result-summary">
+    <div class="stat-box"><span class="stat-num" id="res-score">0</span><span class="stat-label">Score</span></div>
+    <div class="stat-box"><span class="stat-num" id="res-pct">0%</span><span class="stat-label">of max marks</span></div>
+    <div class="stat-box"><span class="stat-num pos" id="res-correct">0</span><span class="stat-label">Correct</span></div>
+    <div class="stat-box"><span class="stat-num neg" id="res-wrong">0</span><span class="stat-label">Wrong</span></div>
+    <div class="stat-box"><span class="stat-num" id="res-acc">0%</span><span class="stat-label">Accuracy</span></div>
+    <div class="stat-box"><span class="stat-num" id="res-time">—</span><span class="stat-label">Time Taken</span></div>
+  </div>
+  <div class="result-sections">
+    <div class="result-block"><h3>Subject-wise Performance</h3><div style="overflow-x:auto"><table class="sec-table" id="sec-table"></table></div></div>
+    <div class="result-block" id="weak-block" style="display:none"><h3>⚠️ Focus on These Subjects</h3><div id="weak-chapters"></div></div>
+    <div class="result-block"><div class="info-box" id="result-note"></div></div>
+  </div>
+  <div class="review-section">
+    <h3>Question Review</h3>
+    <p class="review-note">MCQ: +marks / −⅓ (1-mark) or −⅔ (2-mark). MSQ and NAT have no negative marking; MSQ needs the exact set of correct options.</p>
+    <div id="review-list"></div>
+  </div>
+  <div class="result-actions"><button class="btn-primary" id="btn-new-test">Take Another Test</button></div>
+</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>
