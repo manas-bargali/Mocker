@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mockyDElEd — Uttarakhand D.El.Ed Entrance Mock</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- ───────────────────── HOME SCREEN ───────────────────── -->
+<div id="screen-home" class="screen active">
+  <div class="hero">
+    <div class="hero-badge">UBSE • Uttarakhand D.El.Ed Entrance</div>
+    <h1>mocky<span class="accent">DElEd</span></h1>
+    <p class="tagline">Real PYQs • AI-Generated Mocks • Official Pattern (200 Q · 150 min · 4 Sections)</p>
+    <p class="ai-note" id="ai-status"></p>
+  </div>
+
+  <div class="card-grid">
+    <!-- PYQ Mode -->
+    <div class="mode-card" id="card-pyq">
+      <div class="mode-icon">📄</div>
+      <h2>Real PYQ Practice</h2>
+      <p>Take the actual previous-year questions, digitised from official Uttarakhand D.El.Ed papers.</p>
+
+      <div class="form-group">
+        <label>Choose Paper</label>
+        <div class="count-pills" id="pyq-year-pills"></div>
+      </div>
+
+      <div class="form-group">
+        <label>Section(s) — optional filter</label>
+        <div id="pyq-section-checkboxes" class="chapter-list"></div>
+        <button class="btn-link" id="pyq-select-all">Select All</button>
+      </div>
+
+      <button class="btn-primary" id="btn-start-pyq">
+        Start PYQ Test →
+      </button>
+      <p class="fine-print">No official answer key exists for these scanned papers — Gemini solves the paper once your test starts, so grading may occasionally be imperfect. Please self-verify important questions.</p>
+    </div>
+
+    <!-- Section Practice -->
+    <div class="mode-card" id="card-practice">
+      <div class="mode-icon">📚</div>
+      <h2>Section Practice</h2>
+      <p>Choose section(s) & question count. Fresh AI-generated questions every session.</p>
+
+      <div class="form-group">
+        <label>Select Section(s)</label>
+        <div id="chapter-checkboxes" class="chapter-list"></div>
+        <button class="btn-link" id="btn-select-all">Select All</button>
+      </div>
+
+      <div class="form-group">
+        <label>Number of Questions</label>
+        <div class="count-pills" id="count-pills">
+          <button class="pill" data-count="10">10</button>
+          <button class="pill active" data-count="20">20</button>
+          <button class="pill" data-count="30">30</button>
+          <button class="pill" data-count="50">50</button>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="btn-start-practice">
+        Start Practice →
+      </button>
+    </div>
+
+    <!-- Full Mock -->
+    <div class="mode-card highlight" id="card-full">
+      <div class="mode-icon">🏆</div>
+      <h2>Full Mock Test</h2>
+      <p id="full-mock-desc">Complete UBSE pattern paper. 200 marks. 2h 30m.</p>
+      <ul class="mock-details">
+        <li>✓ 50 Q — General Knowledge & Comprehension</li>
+        <li>✓ 50 Q — General Intelligence & Reasoning</li>
+        <li>✓ 50 Q — Quantitative Aptitude</li>
+        <li>✓ 50 Q — Teaching Aptitude</li>
+        <li>✓ No negative marking (official pattern)</li>
+      </ul>
+      <button class="btn-primary btn-gold" id="btn-start-full">
+        Start Full Mock →
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────── LOADING SCREEN ───────────────────── -->
+<div id="screen-loading" class="screen">
+  <div class="loading-center">
+    <div class="spinner"></div>
+    <h2 id="loading-title">Preparing Your Paper</h2>
+    <p id="loading-sub">Building questions from the D.El.Ed syllabus + real PYQ patterns…</p>
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <span id="progress-label">0 / 0</span>
+    </div>
+    <p class="loading-tip" id="loading-tip">💡 Section practice questions are generated fresh every session!</p>
+  </div>
+</div>
+
+<!-- ───────────────────── EXAM SCREEN ───────────────────── -->
+<div id="screen-exam" class="screen">
+  <div class="exam-header">
+    <div class="exam-info">
+      <span id="exam-mode-label" class="exam-badge">Section Practice</span>
+      <span id="exam-chapter-label"></span>
+    </div>
+    <div class="timer-box" id="timer-box">
+      <span class="timer-icon">⏱</span>
+      <span id="timer-display">00:00</span>
+    </div>
+    <button class="btn-danger-sm" id="btn-submit-early">Submit Paper</button>
+  </div>
+
+  <div class="exam-body">
+    <div class="q-nav" id="q-nav"></div>
+
+    <div class="q-panel">
+      <div class="q-meta">
+        <span id="q-counter">Q 1 of 20</span>
+        <span id="q-chapter-tag" class="chapter-tag"></span>
+        <span id="q-marks-tag" class="marks-tag">1 mark</span>
+      </div>
+      <div class="q-text" id="q-text"></div>
+      <div class="q-options" id="q-options"></div>
+      <div class="q-nav-btns">
+        <button class="btn-secondary" id="btn-prev">← Prev</button>
+        <button class="btn-secondary" id="btn-clear">Clear</button>
+        <button class="btn-primary" id="btn-next">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────── RESULT SCREEN ───────────────────── -->
+<div id="screen-result" class="screen">
+  <div class="result-header">
+    <h1>📊 Result</h1>
+    <p id="result-grade" class="grade-text"></p>
+  </div>
+
+  <div class="result-summary">
+    <div class="stat-box">
+      <span class="stat-num" id="res-score">0</span>
+      <span class="stat-label">Score</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num" id="res-pct">0%</span>
+      <span class="stat-label">Percentage</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num" id="res-attempted">0</span>
+      <span class="stat-label">Attempted</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num" id="res-time">—</span>
+      <span class="stat-label">Time Taken</span>
+    </div>
+  </div>
+
+  <div class="result-sections">
+    <div class="result-block">
+      <h3>Section-wise Accuracy</h3>
+      <div id="chapter-breakdown"></div>
+    </div>
+
+    <div class="result-block" id="weak-block" style="display:none">
+      <h3>⚠️ Focus on These Sections</h3>
+      <div id="weak-chapters"></div>
+    </div>
+
+    <div class="result-block" id="subj-note-block" style="display:none">
+      <div class="info-box" id="ungraded-note"></div>
+    </div>
+  </div>
+
+  <div class="review-section">
+    <h3>Question Review</h3>
+    <p class="review-note">Answers are now revealed. Review each question carefully.</p>
+    <div id="review-list"></div>
+  </div>
+
+  <div class="result-actions">
+    <button class="btn-primary" id="btn-new-test">Take Another Test</button>
+  </div>
+</div>
+
+<script src="/static/js/app.js"></script>
+</body>
+</html>

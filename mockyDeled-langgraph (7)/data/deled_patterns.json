@@ -1,0 +1,133 @@
+{
+  "exam": "Uttarakhand D.El.Ed. Entrance Examination",
+  "official_pattern": {
+    "total_questions": 200,
+    "total_marks": 200,
+    "duration_minutes": 150,
+    "negative_marking": false,
+    "medium": "Bilingual (Hindi & English) — this app is English-medium only",
+    "sections": ["General Knowledge & Comprehension", "General Intelligence & Reasoning", "Quantitative Aptitude", "Teaching Aptitude"],
+    "marks_per_section": 50,
+    "questions_per_section": 50
+  },
+  "sections": {
+    "General Knowledge & Comprehension": {
+      "description": "Static GK (history, geography, polity, economy, science), current affairs (national & international, last 12-18 months), and Uttarakhand-specific GK (geography, history, culture, government schemes).",
+      "topics": [
+        "Indian History (freedom movement, ancient/medieval/modern India)",
+        "Indian Polity & Constitution (articles, amendments, Parliament, judiciary)",
+        "Geography (India & world, physical & economic)",
+        "Uttarakhand GK (districts, culture, history, personalities, schemes)",
+        "Economy & Government Schemes",
+        "Science & Technology (general awareness)",
+        "Current Affairs (national & international events, awards, sports, appointments from the last 12-18 months)",
+        "Books & Authors, Important Days, Sports"
+      ],
+      "question_types": [
+        {"type": "Static GK factual", "example": "The first woman to receive the Bharat Ratna award is -", "options_style": "(A) Mother Teresa (B) Lata Mangeshkar (C) Sarojini Naidu (D) Indira Gandhi", "num_options": 4},
+        {"type": "Uttarakhand-specific GK", "example": "Where in Uttarakhand was a copy of Emperor Ashoka's Rock Edicts discovered -", "options_style": "(A) Kalsi (Dehradun) (B) Pauri (C) Tehri (D) Jageshwar (Almora)", "num_options": 4},
+        {"type": "Polity / Constitution", "example": "Which article of the Constitution of India is related to the Uniform Civil Code?", "options_style": "(A) Article 44 (B) Article 46 (C) Article 48 (D) Article 17", "num_options": 4},
+        {"type": "Current affairs (must be updated to 2026)", "example": "Who is the current Chief Minister of Uttarakhand?", "options_style": "(A)...(D) names of political figures", "num_options": 4}
+      ],
+      "pyq_examples": [
+        "The first woman to receive the Bharat Ratna award is -",
+        "What is the national motto of India-",
+        "Richter scale is used for measuring-",
+        "NABARD is related to -",
+        "The word 'secularism' was inserted in the preamble of the Indian Constitution by -",
+        "What can be the maximum interval between two sessions of Parliament?",
+        "Which amendment to the Constitution inserted a new Article 21A providing Right to Education?",
+        "Where in Uttarakhand was a copy of Emperor Ashoka's Rock Edicts discovered -",
+        "The soldiers of Garhwal Regiment refused to fire on the revolutionaries in -"
+      ]
+    },
+    "General Intelligence & Reasoning": {
+      "description": "Verbal and non-verbal reasoning: series, coding-decoding, direction sense, blood relations, analogy, syllogism, classification, ranking, alphabet/number puzzles. NOTE: figure-based questions (mirror image, paper-folding, cubes/dice, non-verbal series) must be described precisely in words since this platform is text-only — no diagrams.",
+      "topics": [
+        "Number & alphabet series completion",
+        "Coding-Decoding",
+        "Direction sense test",
+        "Blood relations",
+        "Analogy (verbal)",
+        "Syllogism / statement-conclusion",
+        "Classification (odd one out)",
+        "Ranking & ordering",
+        "Word formation / letter puzzles",
+        "Non-verbal reasoning described in words (e.g. simple described figure series, dice/cube logic without needing an image)"
+      ],
+      "question_types": [
+        {"type": "Number/alphabet series", "example": "Find the missing number: 2, 2, 5, 13, 28, ?", "options_style": "(A) 49 (B) 50 (C) 51 (D) 52", "num_options": 4},
+        {"type": "Direction sense", "example": "Suhani is facing towards South-West. She turns 225 degrees anticlockwise and then 315 degrees clockwise. Which direction is she facing now?", "options_style": "(A) South-East (B) East (C) North-West (D) North", "num_options": 4},
+        {"type": "Word/letter puzzle", "example": "How many meaningful words can be formed using the first, third, fifth and sixth letters of the word TRADEMARK, using each letter only once in each word?", "options_style": "(A) One (B) Two (C) Three (D) Four", "num_options": 4},
+        {"type": "Statement-conclusion", "example": "Statement: Every library has books. Which conclusion can be drawn?", "options_style": "(A)...(D) logical conclusion options", "num_options": 4},
+        {"type": "Blood relation", "example": "Pointing to a photograph, a man says 'She is the daughter of my grandfather's only son.' How is the woman related to the man?", "options_style": "(A) Sister (B) Mother (C) Aunt (D) Daughter", "num_options": 4}
+      ],
+      "pyq_examples": [
+        "Find the missing number: 2, 2, 5, 13, 28, ?",
+        "Suhani is facing towards South-West. She turns 225 degrees anticlockwise and then 315 degrees clockwise. Which direction is she facing now?",
+        "How many meaningful words can be formed using the first, third, fifth and sixth letters of the word TRADEMARK, using each letter only once in each word?",
+        "If the last ten letters of the English alphabet are written in reverse order, which of the following will be the sixth to the right of the thirteenth letter from the left end?",
+        "Find the next two terms in the series: T, R, P, N, L, ?, ?",
+        "Which terms will come in place of the question marks in the following series: a, d, c, f, ?, h, g, ?, i",
+        "Statement: Every library has books. On the basis of this statement, which conclusion can be drawn?"
+      ]
+    },
+    "Quantitative Aptitude": {
+      "description": "Basic arithmetic and elementary mathematics at Class 8-10 level: number system, percentage, ratio-proportion, average, simple/compound interest, profit-loss, time-speed-distance, basic mensuration/geometry, and elementary algebra.",
+      "topics": [
+        "Number system (LCM, HCF, divisibility, place value)",
+        "Percentage, Ratio & Proportion",
+        "Average",
+        "Simple & Compound Interest",
+        "Profit, Loss & Discount",
+        "Time, Speed & Distance / Time & Work",
+        "Basic Mensuration (area, angles of polygons)",
+        "Elementary Algebra (simplification, nested radicals)"
+      ],
+      "question_types": [
+        {"type": "Number system", "example": "The least number which when divided by 24, 30 and 54 leaves 5 as remainder in each case is -", "options_style": "(A) 1080 (B) 1075 (C) 1085 (D) 1090", "num_options": 4},
+        {"type": "Algebra / simplification", "example": "The value of sqrt(6 + sqrt(6 + sqrt(6 + ...))) is -", "options_style": "(A) 2 (B) 3 (C) 6 (D) 9", "num_options": 4},
+        {"type": "Mensuration", "example": "If the ratio of internal angles of a quadrilateral is 3:4:5:6, then the angles of the quadrilateral are -", "options_style": "(A) 30,40,50,60 (B) 90,120,150,180 (C) 60,80,100,120 (D) 60,80,95,125", "num_options": 4},
+        {"type": "Number theory", "example": "If n is an integer, then (n^3 - n) is always divisible by -", "options_style": "(A) 11 (B) 5 (C) 6 (D) 7", "num_options": 4}
+      ],
+      "pyq_examples": [
+        "The least number which when divided by 24, 30 and 54 leaves 5 as remainder in each case is -",
+        "The value of sqrt(6 + sqrt(6 + sqrt(6 + ...))) is -",
+        "If the ratio of internal angles of a quadrilateral is 3:4:5:6, then the angles of the quadrilateral are -",
+        "If n is an integer, then (n^3 - n) is always divisible by -",
+        "The average of the first 25 positive integers is -",
+        "Sum of the face value and place value of 9 in 89071 is -",
+        "If a*b = (a+b)^2, then the value of 3*7 is -"
+      ]
+    },
+    "Teaching Aptitude": {
+      "description": "Pedagogy, child psychology, classroom management, teacher qualities, teaching methods, inclusive education, and educational philosophy relevant to elementary school teaching (aligned with NEP 2020 / NCF themes).",
+      "topics": [
+        "Qualities & role of a good teacher",
+        "Classroom management & discipline",
+        "Child psychology & development",
+        "Teaching methods & techniques",
+        "Motivation & learning theories",
+        "Inclusive education",
+        "Curriculum, evaluation & assessment (formative/summative)",
+        "NEP 2020 & NCF themes relevant to elementary teacher training"
+      ],
+      "question_types": [
+        {"type": "Teacher qualities", "example": "What is important for success in the teaching profession?", "options_style": "(A) Prosperity of community (B) Proficiency of teacher (C) Educational qualification of teacher (D) Cooperation of principal", "num_options": 4},
+        {"type": "Classroom scenario", "example": "A guardian never comes to see you in school. As a teacher, you will -", "options_style": "(A) ignore the child (B) write a letter to the guardian (C) go to meet the guardian yourself, if possible (D) start punishing the child", "num_options": 4},
+        {"type": "Child psychology", "example": "The first source of socialization for a child is -", "options_style": "(A) family (B) school (C) temple (D) playground", "num_options": 4},
+        {"type": "Pedagogy", "example": "At primary level, it is better to teach in the mother tongue because -", "options_style": "(A) it develops self-confidence (B) it makes learning easy (C) it helps intellectual development (D) it helps children learn in a natural atmosphere", "num_options": 4}
+      ],
+      "pyq_examples": [
+        "What is important for success in the teaching profession?",
+        "A guardian never comes to see you in school. As a teacher, you will -",
+        "The first source of socialization for a child is -",
+        "At primary level, it is better to teach in the mother tongue because -",
+        "The quality of school education exclusively depends upon -",
+        "Those teachers are popular among students who -",
+        "Students will take interest in the lesson if the teacher -",
+        "Which of the following is not a component of inclusive education?"
+      ]
+    }
+  }
+}
